@@ -1,0 +1,55 @@
+<div id="dreams-list"></div>
+<button id="refresh-button">Refresh List</button>
+
+<div id="dream-form">
+	<input type="textarea" id="dream-story-field"></input>
+	<button type="button" id="submit-dream">Submit!</button>
+</div> 
+
+<script type="text/javascript">
+
+	$(function() {
+
+		DJ.Dream.fetchAll();
+
+		var dreamsList = $('#dreams-list');
+		var dreamsView = new DJ.dreamView(dreamsList);
+
+
+		var refreshButton = $('#refresh-button')
+		refreshButton.click(function () {
+			console.log("refresh button pressed");
+			DJ.Dream.fetchAll();
+		});
+
+		var dreamTextArea = $("#dream-story-field");
+		var submitButton = $("#submit-dream");
+
+
+		var dreamFormView = new DJ.dreamFormView(
+			dreamTextArea, 
+			submitButton, 
+			function(newDream) {
+				newDream.save();
+			}
+		);
+
+		submitButton.click(function () {
+			console.log("button pressed")
+			dreamFormView.bind()
+		});
+		
+
+	});
+
+
+
+
+
+
+
+
+
+
+
+</script>
