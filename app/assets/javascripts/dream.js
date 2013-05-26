@@ -9,6 +9,7 @@ var DJ = (function () {
 		this.story = story;
 	};
 
+	// !!!!!  sort of working  !!!!!!
 	Dream.prototype.save = function() {
 		var that = this;
 
@@ -18,7 +19,7 @@ var DJ = (function () {
 				story: that.story
 			}
 		},
-			function (repsonse) {
+			function (response) {
 				that.id = response.id;
 				Dream.all.push(that);
 
@@ -27,6 +28,7 @@ var DJ = (function () {
 			});
 		});
 	};
+
 
 	Dream.all = []
 	Dream.callbacks = []
@@ -95,6 +97,10 @@ var DJ = (function () {
 		};
 
 		that.$button.click(that.buttonClickHandler());
+
+		// that.$button.click(fucntion {
+		// 	that.buttonClickHandler();
+		// });
 	};
 
 	dreamFormView.prototype.submit = function() {

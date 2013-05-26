@@ -3,7 +3,7 @@ class DreamsController < ApplicationController
 	def index 
 		respond_to do |format|
       format.html { render :index }
-      format.json { render json: Dream.all }
+      format.json { render :json => Dream.all }
     end
 	end
 
@@ -12,7 +12,8 @@ class DreamsController < ApplicationController
 		@dream = Dream.create!(params[:dream])
 
 		respond_to do |format|
-			format.json { render json: @dream }
+			format.json { render :json => @dream }
 		end
 	end
+
 end
